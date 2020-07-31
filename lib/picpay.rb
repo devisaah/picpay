@@ -1,5 +1,8 @@
-require 'picpay/version'
+require 'json'
+require 'date'
+require 'faraday'
 
+require 'picpay/version'
 require 'picpay/seller'
 require 'picpay/buyer'
 require 'picpay/payment'

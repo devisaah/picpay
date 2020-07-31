@@ -48,9 +48,9 @@ picpay.phone = '+55 85 12345-6789'
 # Payment
 picpay.reference_id = '102030'
 picpay.callback_url = 'http://www.sualoja.com.br/callback'
-picpay.return_url = 'http://www.sualoja.com.br/cliente/pedido/102030'
+picpay.return_url = 'http://www.sualoja.com.br/cliente/pedido/102030' # optional
 picpay.value = 45.55 # format decimal
-picpay.expires_at = '11/11/2022' # optional
+picpay.expires_at = '20/09/2022 00:00 -03:00' # optional gem convert to format correct ISO 8601 ex: 2022-05-01T16:00:00-03:00
 
 # Payment Request
 payment_request = picpay.payments()
@@ -59,6 +59,7 @@ payment_request.status
 payment_request.headers
 # => {"server"=>"app.picpay.com", "content-type"=>"application/json; charset=utf-8"...
 payment_request.body
+response = payment_request.body.force_encoding('ASCII-8BIT').force_encoding('UTF-8') # optional case error utf-8
 # => "{referenceId: "102030"...
 
 reference_id = '102030'
@@ -71,6 +72,8 @@ payment_cancellation.status
 payment_cancellation.headers
 # => {"server"=>"app.picpay.com", "content-type"=>"application/json; charset=utf-8"...
 payment_cancellation.body
+response = payment_cancellation.body.force_encoding('ASCII-8BIT').force_encoding('UTF-8') # optional case error utf-8
+
 # => "{referenceId: "102030"...
 
 # Payment Status
@@ -80,6 +83,7 @@ payment_status.status
 payment_status.headers
 # => {"server"=>"app.picpay.com", "content-type"=>"application/json; charset=utf-8"...
 payment_status.body
+response = payment_status.body.force_encoding('ASCII-8BIT').force_encoding('UTF-8') # optional case error utf-8
 # => "{referenceId: "102030"...
 ```
 
